@@ -1,9 +1,10 @@
+import styeled from "styled-components";
+
 export const InputTodo = (props) => {
   const { inputTodo, setInputTodo, onClickAdd } = props;
   return (
     <div>
-      <input
-        className="input-todo"
+      <SInput
         placeholder="TODOを入力"
         value={inputTodo}
         onChange={(e) => setInputTodo(e.target.value)}
@@ -12,3 +13,10 @@ export const InputTodo = (props) => {
     </div>
   );
 };
+
+const SInput = styeled.input`
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+`;

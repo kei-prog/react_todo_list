@@ -1,10 +1,23 @@
+import styled from "styled-components";
+
 export const TodoCounts = (props) => {
   const { totalTodosCount, completedTodosCount, incompleteTodosCount } = props;
   return (
-    <div className="todo-counts">
-      <p className="todo-counts-item">合計: {totalTodosCount}</p>
-      <p className="todo-counts-item">完了: {completedTodosCount}</p>
-      <p className="todo-counts-item">未完了: {incompleteTodosCount}</p>
-    </div>
+    <STodoCounts>
+      <STodoCountsItem> 合計: {totalTodosCount}</STodoCountsItem>
+      <STodoCountsItem> 完了: {completedTodosCount} </STodoCountsItem>
+      <STodoCountsItem> 未完了: {incompleteTodosCount}</STodoCountsItem>
+    </STodoCounts>
   );
 };
+
+const STodoCounts = styled.div`
+  display: flex;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #777;
+`;
+
+const STodoCountsItem = styled.p`
+  margin-right: 10px;
+`;
