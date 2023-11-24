@@ -1,3 +1,5 @@
+import styled from "styled-components";
+
 export const TodoList = (props) => {
   const {
     todos,
@@ -12,23 +14,22 @@ export const TodoList = (props) => {
       <ul>
         {todos.map((todo, index) => (
           <li key={todo}>
-            <div className="todo-item-label">
+            <STodoItem>
               <input
                 type="checkbox"
                 checked={todo.isCompleted}
                 onClick={() => onClickComplete(index)}
               />
               {todo.isEditing ? (
-                <input
+                <SInput
                   type="text"
                   value={todo.text}
-                  className="input-editing-todo"
                   onChange={(e) => handleEditInputChange(e, index)}
                 />
               ) : (
                 <p>{todo.text}</p>
               )}
-            </div>
+            </STodoItem>
             <div>
               <button onClick={() => onClickEdit(index)}>編集</button>
               <button onClick={() => onClickDelete(index)}>削除</button>
@@ -39,3 +40,17 @@ export const TodoList = (props) => {
     </>
   );
 };
+
+const STodoItem = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+
+const SInput = styled.input`
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background-color: #f5f5f5;
+  font-weight: bold;
+`;

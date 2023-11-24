@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { InputTodo } from "./components/InputTodo";
 import { TodoList } from "./components/TodoList";
 import { TodoCounts } from "./components/TodoCounts";
@@ -63,7 +64,7 @@ function App() {
   const incompleteTodosCount = totalTodosCount - completedTodosCount;
 
   return (
-    <div className="container">
+    <SContainer>
       <InputTodo
         inputTodo={inputTodo}
         setInputTodo={setInputTodo}
@@ -83,8 +84,17 @@ function App() {
           incompleteTodosCount={incompleteTodosCount}
         />
       </div>
-    </div>
+    </SContainer>
   );
 }
+
+const SContainer = styled.div`
+  margin: 0 auto;
+  margin-top: 10px;
+  padding: 20px;
+  width: 500px;
+  border: 1px solid #ddd;
+  background-color: #f5f5f5;
+`;
 
 export default App;
