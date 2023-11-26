@@ -9,16 +9,6 @@ function App() {
   const [inputTodo, setInputTodo] = useState("");
   const [todos, setTodos] = useState([]);
 
-  const toggleComplete = (index) => {
-    const newTodos = todos.map((todo, i) => {
-      if (i === index) {
-        return { ...todo, isCompleted: !todo.isCompleted };
-      }
-      return todo;
-    });
-    setTodos(newTodos);
-  };
-
   const onClickAdd = () => {
     if (inputTodo === "") return;
     const newTodos = [
@@ -30,13 +20,19 @@ function App() {
   };
 
   const onClickDelete = (index) => {
-    if (window.confirm("本当に削除してもよろしいですか?") === false) return;
+    if (!window.confirm("本当に削除してもよろしいですか?")) return;
     const newTodos = todos.filter((_todo, i) => i !== index);
     setTodos(newTodos);
   };
 
   const onClickComplete = (index) => {
-    toggleComplete(index);
+    const newTodos = todos.map((todo, i) => {
+      if (i === index) {
+        return { ...todo, isCompleted: !todo.isCompleted };
+      }
+      return todo;
+    });
+    setTodos(newTodos);
   };
 
   const onClickEdit = (index) => {
